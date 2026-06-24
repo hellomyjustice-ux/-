@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학생 게시판</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 py-12 px-4">
+
+  <!-- 배경 장식 -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600 rounded-full filter blur-[120px] opacity-10"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600 rounded-full filter blur-[120px] opacity-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-fuchsia-600 rounded-full filter blur-[100px] opacity-5"></div>
+  </div>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <!-- 헤더 -->
+    <header class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-subtle text-xs font-medium text-violet-300 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+        Students Board
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
+        <span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent">
+          학생 게시판
+        </span>
+      </h1>
+      <p class="text-slate-400 text-sm">자유롭게 생각을 나눠보세요</p>
+    </header>
+
+    <!-- 글 작성 폼 -->
+    <div class="glass rounded-2xl p-6 sm:p-8 mb-8">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 text-sm">✏️</div>
+        <h2 class="text-white font-semibold">새 글 작성</h2>
+      </div>
+      <form id="post-form" class="flex flex-col gap-4">
+        <input
+          type="text"
+          id="title-input"
+          placeholder="제목을 입력하세요"
+          required
+          class="w-full px-4 py-3 rounded-xl input-field text-white placeholder-slate-500 text-sm font-medium focus:outline-none transition-all"
+        >
+        <textarea
+          id="content-input"
+          placeholder="내용을 자유롭게 적어보세요..."
+          required
+          rows="4"
+          class="w-full px-4 py-3 rounded-xl input-field text-white placeholder-slate-500 text-sm focus:outline-none transition-all resize-none leading-relaxed"
+        ></textarea>
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white btn-primary transition-all active:scale-95"
+          >
+            <span>글 올리기</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 목록 헤더 -->
+    <div class="flex items-center justify-between mb-4 px-1">
+      <div class="flex items-center gap-2">
+        <span class="text-slate-400 text-sm font-medium">전체 글</span>
+        <span id="post-count" class="px-2 py-0.5 rounded-full text-xs font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">0</span>
+      </div>
+    </div>
+
+    <!-- 게시글 목록 -->
+    <ul id="post-list" class="flex flex-col gap-3"></ul>
+
+    <!-- 빈 상태 -->
+    <div id="empty-state" class="hidden text-center py-20">
+      <div class="text-5xl mb-4 select-none">🗒️</div>
+      <p class="text-slate-400 text-sm leading-relaxed">아직 작성된 글이 없어요.<br>첫 번째 글을 올려보세요!</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
