@@ -1,5 +1,5 @@
 // ※ Google Apps Script 웹 앱 배포 후 아래 URL을 교체하세요
-const GAS_URL = 'YOUR_WEB_APP_URL_HERE';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwzkqEetUyK-WNQ-pskhBpzemVSVu3y6Eqs2DnKtoWNKliVRU0KeGc5p6erTwDjfjM/exec';
 
 const form        = document.getElementById('post-form');
 const titleInput  = document.getElementById('title-input');
