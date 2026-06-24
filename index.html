@@ -57,6 +57,13 @@
           required
           class="w-full px-4 py-3 rounded-xl input-field text-white placeholder-slate-500 text-sm font-medium focus:outline-none transition-all"
         >
+        <input
+          type="text"
+          id="name-input"
+          placeholder="이름을 입력하세요"
+          required
+          class="w-full px-4 py-3 rounded-xl input-field text-white placeholder-slate-500 text-sm font-medium focus:outline-none transition-all"
+        >
         <textarea
           id="content-input"
           placeholder="내용을 자유롭게 적어보세요..."
@@ -64,7 +71,8 @@
           rows="4"
           class="w-full px-4 py-3 rounded-xl input-field text-white placeholder-slate-500 text-sm focus:outline-none transition-all resize-none leading-relaxed"
         ></textarea>
-        <div class="flex justify-end">
+        <div class="flex items-center justify-end gap-4">
+          <span id="sync-status" class="text-xs text-violet-400"></span>
           <button
             type="submit"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white btn-primary transition-all active:scale-95"
@@ -86,8 +94,14 @@
       </div>
     </div>
 
+    <!-- 로딩 스피너 -->
+    <div id="loading-view" class="flex flex-col items-center gap-3 py-16">
+      <div class="spinner"></div>
+      <p class="text-slate-500 text-xs">스프레드시트에서 불러오는 중…</p>
+    </div>
+
     <!-- 게시글 목록 -->
-    <ul id="post-list" class="flex flex-col gap-3"></ul>
+    <ul id="post-list" class="hidden flex flex-col gap-3"></ul>
 
     <!-- 빈 상태 -->
     <div id="empty-state" class="hidden text-center py-20">
